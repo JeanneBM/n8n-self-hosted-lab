@@ -1,0 +1,22 @@
+# Środowisko
+.env
+.env.local
+.env.*.local
+
+# Dane i backupy
+*.tar.gz
+*.sql
+backups/
+local-files/*
+!local-files/.gitkeep
+
+# Docker / system
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~

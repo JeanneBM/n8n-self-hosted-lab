@@ -1,0 +1,31 @@
+services:
+  n8n:
+    image: n8nio/n8n:2.43.4
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    environment:
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE:-Europe/Warsaw}
+      - TZ=${TZ:-Europe/Warsaw}
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_HOST=${N8N_HOST:-localhost}
+      - N8N_PORT=${N8N_PORT:-5678}
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL:-}
+      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-}
+      # Opcjonalnie – szyfrowanie (zalecane w produkcji)
+      # - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./local-files:/files
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:5678/healthz || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  n8n_data:
+    name: jb_n8n_data
