@@ -1,5 +1,5 @@
-# Alternatywna konfiguracja z PostgreSQL (zalecana na dłużej / produkcję)
-# Użycie: docker compose -f compose.postgres.yml up -d
+# Alternative PostgreSQL configuration for persistent lab use
+# Usage: docker compose -f compose.postgres.yml up -d
 
 services:
   postgres:
@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-n8n}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Ustaw POSTGRES_PASSWORD w pliku .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_DB: ${POSTGRES_DB:-n8n}
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -60,10 +60,10 @@ services:
 
 volumes:
   n8n_data:
-    name: jb_n8n_data
+    name: n8n-self-hosted-lab_data
   postgres_data:
-    name: jb_n8n_postgres_data
+    name: n8n-self-hosted-lab_postgres_data
 
 networks:
   n8n-net:
-    name: jb_n8n_net
+    name: n8n-self-hosted-lab_net

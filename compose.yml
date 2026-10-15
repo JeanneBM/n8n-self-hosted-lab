@@ -14,7 +14,7 @@ services:
       - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
       - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL:-}
       - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-}
-      # Opcjonalnie – szyfrowanie (zalecane w produkcji)
+      # Optional encryption (recommended for production)
       # - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
     volumes:
       - n8n_data:/home/node/.n8n
@@ -28,4 +28,4 @@ services:
 
 volumes:
   n8n_data:
-    name: jb_n8n_data
+    name: n8n-self-hosted-lab_data

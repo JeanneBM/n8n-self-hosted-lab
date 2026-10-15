@@ -1,9 +1,9 @@
-# Środowisko
+# Environment
 .env
 .env.local
 .env.*.local
 
-# Dane i backupy
+# Data and backups
 *.tar.gz
 *.sql
 backups/
