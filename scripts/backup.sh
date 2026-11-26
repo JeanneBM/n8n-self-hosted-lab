@@ -9,7 +9,7 @@ VOLUME_NAME="${VOLUME_NAME:-n8n-self-hosted-lab_data}"
 mkdir -p "$BACKUP_DIR"
 
 echo "→ Stopping n8n..."
-docker compose stop n8n 2>/dev/null || true
+docker compose stop n8n
 
 echo "→ Backing up volume $VOLUME_NAME → $BACKUP_DIR/n8n-backup-$TIMESTAMP.tar.gz"
 docker run --rm \
