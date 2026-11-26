@@ -23,7 +23,7 @@ if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
 fi
 
 echo "→ Stopping n8n..."
-docker compose stop n8n 2>/dev/null || true
+docker compose stop n8n
 
 echo "→ Restoring backup..."
 docker run --rm \
